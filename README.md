@@ -49,7 +49,6 @@ has_many :product_purchases
 | item_price         | integer      | null: false |
 | state_id           | integer      | null: false |
 | category_id        | integer      | null: false |
-| seller             | string       | null: false |
 | send_prefecture_id | integer      | null: false |
 | burden_id          | integer      | null: false |
 | shipping_day_id    | integer      | null: false |
@@ -58,7 +57,7 @@ has_many :product_purchases
 belongs_to :user
 has_one :product_purchase
 
-## transactions テーブル
+## addresses テーブル
 | Column          | Type         | Options     |
 | ----------      | ------------ | ----------- |
 | post_number     | string       | null: false |
@@ -71,16 +70,16 @@ has_one :product_purchase
 
 belongs_to :user
 belongs_to :item
-has_one :product_purchase
+belongs_to :product_purchase
 
 
 
 ## product_purchases テーブル
 | Column             | Type         | Options     |
-| user               | references   | null: false, foreign_key: true |
-| item               | references   | null: false, foreign_key: true |
+| user               | references   | null: false, foreign_key: address |
+| item               | references   | null: false, foreign_key: address |
 
 
 belongs_to :user
 belongs_to :item
-belongs_to :transactions
+has_one :addresses
