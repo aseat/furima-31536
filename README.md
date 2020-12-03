@@ -36,7 +36,7 @@ Things you may want to cover:
 | name                 | string | null: false |
 | family_namekana      | string | null: false |
 | namekana             | string | null: false |
-| date_id              | integer| null: false |
+| birth                | date   | null: false |
 
 has_many :items
 has_many :transactions
@@ -54,7 +54,7 @@ has_many :product_purchases
 | send_prefecture_id | integer      | null: false |
 | burden_id          | integer      | null: false |
 | shipping_day_id    | integer      | null: false |
-| user               | references   |             |
+| user               | references   | null: false, foreign_key: true |
 
 belongs_to :user
 has_one :transaction
@@ -69,7 +69,7 @@ has_one :product_purchase
 | address         | string       | null: false |
 | build_name      | string       |             |
 | phone_nuber     | string       | null: false |
-| user            | references   |             |
+| user            | references   | null: false, foreign_key: true |
 
 belongs_to :user
 belongs_to :item
@@ -79,15 +79,9 @@ has_one :product_purchase
 
 ## product_purchases テーブル
 | Column             | Type         | Options     |
-| user               | references   |             |
-| category           | references   |             |
-| seller             | references   |             |
-| item_name          | references   |             |
-| text               | references   |             |            
-| item_price         | references   |             |
-| send_prefecture_id | references   |             |
-| burden_id          | references   |             |
-| shipping_day_id    | references   |             |
+| user               | references   | null: false, foreign_key: true |
+| item_name          | references   | null: false, foreign_key: true |
+
 
 belongs_to :user
 belongs_to :item
