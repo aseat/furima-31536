@@ -39,7 +39,6 @@ Things you may want to cover:
 | birth                | date   | null: false |
 
 has_many :items
-has_many :transactions
 has_many :product_purchases
 
 ## items テーブル
@@ -57,7 +56,6 @@ has_many :product_purchases
 | user               | references   | null: false, foreign_key: true |
 
 belongs_to :user
-has_one :transaction
 has_one :product_purchase
 
 ## transactions テーブル
@@ -69,7 +67,7 @@ has_one :product_purchase
 | address         | string       | null: false |
 | build_name      | string       |             |
 | phone_nuber     | string       | null: false |
-| user            | references   | null: false, foreign_key: true |
+| user            | references   | null: false, foreign_key: product_purchase |
 
 belongs_to :user
 belongs_to :item
@@ -80,7 +78,7 @@ has_one :product_purchase
 ## product_purchases テーブル
 | Column             | Type         | Options     |
 | user               | references   | null: false, foreign_key: true |
-| item_name          | references   | null: false, foreign_key: true |
+| item               | references   | null: false, foreign_key: true |
 
 
 belongs_to :user
