@@ -73,9 +73,9 @@ belongs_to :product_purchase
 
 
 ## product_purchases テーブル
-| Column             | Type         | Options     |
-| user               | references   | null: false, foreign_key: address |
-| item               | references   | null: false, foreign_key: address |
+| Column             | Type         | Options                        |
+| user               | references   | null: false, foreign_key: true |
+| item               | references   | null: false, foreign_key: true |
 
 
 belongs_to :user
