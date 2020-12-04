@@ -49,10 +49,10 @@ has_many :product_purchases
 | price              | integer      | null: false |
 | state_id           | integer      | null: false |
 | category_id        | integer      | null: false |
-| send_prefecture_id | integer      | null: false |
+| prefecture_id      | integer      | null: false |
 | burden_id          | integer      | null: false |
 | shipping_day_id    | integer      | null: false |
-| user               | references   | null: false, foreign_key: true |
+| user               | references   | null: false |
 
 belongs_to :user
 has_one :product_purchase
@@ -66,7 +66,7 @@ has_one :product_purchase
 | address         | string       | null: false |
 | build_name      | string       |             |
 | phone_nuber     | string       | null: false |
-| user            | references   | null: false, foreign_key: product_purchase |
+| user            | references   | null: false, foreign_key: true |
 
 belongs_to :product_purchase
 
