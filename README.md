@@ -30,7 +30,7 @@ Things you may want to cover:
 | Column                | Type   | Options     |
 | ----------           | ------ | ----------- |
 | nickname             | string | null: false |
-| email                | string | null: false |
+| email                | string | unique: true |
 | encrypted_password   | string | null: false |
 | family_name          | string | null: false |
 | name                 | string | null: false |
@@ -44,9 +44,9 @@ has_many :product_purchases
 ## items テーブル
 | Column             | Type         | Options     |
 | -----------------  | ------------ | ----------- |
-| item_name          | string       | null: false |
+| name               | string       | null: false |
 | text               | text         | null: false |            
-| item_price         | integer      | null: false |
+| price              | integer      | null: false |
 | state_id           | integer      | null: false |
 | category_id        | integer      | null: false |
 | send_prefecture_id | integer      | null: false |
@@ -68,8 +68,6 @@ has_one :product_purchase
 | phone_nuber     | string       | null: false |
 | user            | references   | null: false, foreign_key: product_purchase |
 
-belongs_to :user
-belongs_to :item
 belongs_to :product_purchase
 
 
@@ -82,4 +80,4 @@ belongs_to :product_purchase
 
 belongs_to :user
 belongs_to :item
-has_one :addresses
+has_one :address
