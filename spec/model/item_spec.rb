@@ -10,11 +10,6 @@ RSpec.describe Item, type: :model do
         it 'name,text,image,price,state_id,category_id,prefecture,burden_id,shipping_day_idが存在すれば登録できること' do
           expect(@item).to be_valid
         end
-
-        it 'priceが半角数字であれば登録できること' do
-          @item.price = 1000
-          expect(@item).to be_valid
-        end
       end
 
       context '出品ができない場合' do
@@ -55,7 +50,7 @@ RSpec.describe Item, type: :model do
         end
 
         it 'priceが10,000,000円以上では登録できないこと' do
-          @item.price = 10000000
+          @item.price = 10_000_000
           @item.valid?
           expect(@item.errors.full_messages).to include('Price Out of setting range')
         end
