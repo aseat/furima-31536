@@ -51,11 +51,11 @@ has_many :product_purchases
 | category_id        | integer      | null: false |
 | prefecture_id      | integer      | null: false |
 | burden_id          | integer      | null: false |
-| shipping_day_id    | integer      | null: false |
+| shippingday_id     | integer      | null: false |
 | user               | references   | null: false |
 
 belongs_to :user
-has_one :product_purchase
+has_one :purchase
 
 ## addresses テーブル
 | Column          | Type         | Options     |
@@ -68,11 +68,11 @@ has_one :product_purchase
 | phone_nuber     | string       | null: false |
 | user            | references   | null: false, foreign_key: true |
 
-belongs_to :product_purchase
+belongs_to :purchase
 
 
 
-## product_purchases テーブル
+## purchases テーブル
 | Column             | Type         | Options                        |
 | user               | references   | null: false, foreign_key: true |
 | item               | references   | null: false, foreign_key: true |

@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
     end
     describe '出品情報の登録' do
       context '出品ができる場合' do
-        it 'name,text,image,price,state_id,category_id,prefecture,burden_id,shipping_day_idが存在すれば登録できること' do
+        it 'name,text,image,price,state_id,category_id,prefecture,burden_id,shippingday_idが存在すれば登録できること' do
           expect(@item).to be_valid
         end
       end
@@ -79,8 +79,8 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include('Burden Select')
         end
 
-        it 'shipping_dayは選択しないと登録できないこと' do
-          @item.shipping_day_id = 1
+        it 'shippingdayは選択しないと登録できないこと' do
+          @item.shippingday_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include('Shipping day Select')
         end
