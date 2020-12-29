@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to root_path
     else
-      render :edit
+      redirect_to item_addresses_path
     end
   end
 
