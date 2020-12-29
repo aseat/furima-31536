@@ -1,13 +1,14 @@
 class AddressesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_address, only: [:index, :create]
+
   def index
     @purchase_address = PurchaseAddress.new
-    @item = Item.find(params[:item_id])
+
     redirect_to root_path if current_user == @item.user || @item.purchase.present?
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new(address_params)
     if @purchase_address.valid?
       @purchase_address.save
@@ -31,5 +32,9 @@ class AddressesController < ApplicationController
       card: address_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_address
+    @item = Item.find(params[:item_id])
   end
 end

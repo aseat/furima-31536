@@ -10,6 +10,11 @@ RSpec.describe PurchaseAddress, type: :model do
         it '必要な情報を適切に入力すると、商品の購入ができること' do
           expect(@purchase_address).to be_valid
         end
+
+        it 'build_nameが空でも購入できる' do
+          @purchase_address.build_name = nil
+          expect(@purchase_address).to be_valid
+        end
       end
 
       context '購入できない場合' do
@@ -27,6 +32,12 @@ RSpec.describe PurchaseAddress, type: :model do
 
         it 'prefectureは選択しないと登録できないこと' do
           @purchase_address.prefecture_id = 1
+          @purchase_address.valid?
+          expect(@purchase_address.errors.full_messages).to include('Prefecture Select')
+        end
+
+        it 'prefecture_idが空だと購入できないこと' do
+          @purchase_address.prefecture_id = nil
           @purchase_address.valid?
           expect(@purchase_address.errors.full_messages).to include('Prefecture Select')
         end
@@ -51,6 +62,12 @@ RSpec.describe PurchaseAddress, type: :model do
 
         it 'phone_numberにハイフンがあると購入できないこと' do
           @purchase_address.phone_number = '09012345-78'
+          @purchase_address.valid?
+          expect(@purchase_address.errors.full_messages).to include('Phone number Input only number')
+        end
+
+        it '電話番号が11桁以上だと購入できないこと' do
+          @purchase_address.phone_number = '090123452134354678'
           @purchase_address.valid?
           expect(@purchase_address.errors.full_messages).to include('Phone number Input only number')
         end
