@@ -27,8 +27,8 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column                | Type   | Options     |
-| ----------           | ------ | ----------- |
+| Column               | Type   | Options     |
+| -------------------- | ------ | ----------- |
 | nickname             | string | null: false |
 | email                | string | unique: true, null: false |
 | encrypted_password   | string | null: false |
@@ -43,7 +43,7 @@ has_many :product_purchases
 
 ## items テーブル
 | Column             | Type         | Options     |
-| -----------------  | ------------ | ----------- |
+| ------------------ | ------------ | ----------- |
 | name               | string       | null: false |
 | text               | text         | null: false |            
 | price              | integer      | null: false |
@@ -59,21 +59,19 @@ has_one :purchase
 
 ## addresses テーブル
 | Column          | Type         | Options     |
-| ----------      | ------------ | ----------- |
+| --------------- | ------------ | ----------- |
 | post_number     | string       | null: false |
 | prefecture_id   | integer      | null: false |
 | municipality    | string       | null: false |
 | address         | string       | null: false |
 | build_name      | string       |             |
 | phone_nuber     | string       | null: false |
-| user            | references   | null: false, foreign_key: true |
 
 belongs_to :purchase
 
-
-
 ## purchases テーブル
 | Column             | Type         | Options                        |
+| ------------------ | ------------ | ------------------------------ |
 | user               | references   | null: false, foreign_key: true |
 | item               | references   | null: false, foreign_key: true |
 
