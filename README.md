@@ -39,7 +39,7 @@ Things you may want to cover:
 | birth                | date   | null: false |
 
 has_many :items
-has_many :product_purchases
+has_many :purchases
 
 ## items テーブル
 | Column             | Type         | Options     |
